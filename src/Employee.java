@@ -1,19 +1,22 @@
+
 public class Employee {
+
     private final String employee;
     private String department;
     private double salary;
-    static int counter;
     private int id;
 
-    public Employee(String employee, String department, double salary) {
-        this.id = id();
+    private static int counter;
+
+    public static int id() { //метод-счетчик
+        return counter++;
+    }
+
+    public Employee(String employee, String department, double salary) { //конструктор
+        id = id();
         this.employee = employee;
         this.department = department;
         this.salary = salary;
-    }
-
-    public static int id() {
-        return counter++;
     }
 
     public String getEmployee() {
@@ -46,6 +49,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "id: " + id + ", Ф.И.О.: " + employee +  ", Отдел № " + department + ", Зарплата: " + salary;
+        return "id: " + getId() + ", Ф.И.О.: " + employee + ", Отдел № " + department + ", Зарплата: " + salary;
     }
 }
